@@ -10,12 +10,21 @@ class BuddyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $filter = $request->only(['name']);
+
+        $query = Buddy::orderByDesc('created_at');
+
+        if($filter){
+            $query->where('name',  $filter['name']);
+        }
+
         return inertia(
             'Buddy/Index',
             [
-                'buddies' => Buddy::all()
+                'filter' => $filter,
+                'buddies' => $query->paginate(5)->withQueryString()
             ]
         );
 
