@@ -3,7 +3,7 @@
   <header class="w-full bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 ">
     <div class="container mx-auto">
       <nav class="p-4 flex items-center justify-between">
-        <div class="text-xl text-yellow-500 dark:text-yellow-300 font-bold">
+        <div class="hidden md:block text-xl text-yellow-500 dark:text-yellow-300 font-bold">
           <Link :href="route('buddy.index')">Buddies</Link>&nbsp;
         </div>
         <div class="text-3xl text-yellow-500 dark:text-yellow-300 font-bold text-center">
