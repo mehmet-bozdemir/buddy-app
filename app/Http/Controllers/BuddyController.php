@@ -12,9 +12,10 @@ class BuddyController extends Controller
      */
     public function index(Request $request)
     {
+
         $filter = $request->only(['name']);
 
-        $query = Buddy::orderByDesc('created_at');
+        $query = Buddy::orderByDesc('created_at')->with('images');
 
         if($filter){
             $query->where('name',  $filter['name']);
@@ -67,6 +68,7 @@ class BuddyController extends Controller
      */
     public function show(Buddy $buddy)
     {
+        $buddy->load(['images']);
         return inertia(
             'Buddy/Show',
             [

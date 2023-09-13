@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\BuddyController::class, 'index']);
-Route::get('/show', [\App\Http\Controllers\IndexController::class, 'show']);
 
 Route::resource('buddy', \App\Http\Controllers\BuddyController::class);
+
+Route::resource('buddy.image', \App\Http\Controllers\ImageController::class)->only(['create', 'store', 'destroy']);
