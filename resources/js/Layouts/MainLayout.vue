@@ -15,18 +15,20 @@
       </nav>
     </div>
   </header>
-  <main class="container mx-auto p-4">
+  <main class="container mx-auto p-4 min-h-screen">
     <div v-if="flashSuccess" class="mb-4 p-2 border rounded-md shadow-sm border-green-200 bg-green-50">
       {{ flashSuccess }}
     </div>
     <slot />
   </main>
+    <FooterBlock/>
 </template>
 
 <script setup>
 import {Link, usePage} from '@inertiajs/vue3'
 import {computed} from 'vue'
 import HeaderBlock from '@/Components/UI/HeaderBlock.vue'
+import FooterBlock from "@/Components/UI/FooterBlock.vue";
 
 const page = usePage()
 const flashSuccess = computed(

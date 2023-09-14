@@ -25,7 +25,7 @@ class BuddyController extends Controller
             'Buddy/Index',
             [
                 'filter' => $filter,
-                'buddies' => $query->paginate(5)->withQueryString()
+                'buddies' => $query->paginate(6)->withQueryString()
             ]
         );
 
