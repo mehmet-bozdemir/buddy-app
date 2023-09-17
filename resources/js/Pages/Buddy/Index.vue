@@ -22,7 +22,7 @@
             <BuddySecondaryInfo :buddy="buddy" class="text-lg" />
           </Link>
           <div>
-          <div class="flex flex row justify-end gap-2">
+          <div class="flex flex-row justify-end gap-2">
               <Link :href="route('buddy.edit', buddy.id)">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
@@ -47,15 +47,39 @@
 </template>
 
 <script setup>
-import {Link} from '@inertiajs/vue3'
-import Box from '@/Components/UI/Box.vue'
-import BuddyMainInfo from '@/Components/BuddyMainInfo.vue'
-import BuddySecondaryInfo from '@/Components/BuddySecondaryInfo.vue'
-import Pagination from '@/Components/UI/Pagination.vue'
-import Search from '@/Components/UI/Search.vue'
+import {Link} from '@inertiajs/vue3';
+import Box from '@/Components/UI/Box.vue';
+import BuddyMainInfo from '@/Components/BuddyMainInfo.vue';
+import BuddySecondaryInfo from '@/Components/BuddySecondaryInfo.vue';
+import Pagination from '@/Components/UI/Pagination.vue';
+import Search from '@/Components/UI/Search.vue';
+import BuddyHoroscope from "@/Components/BuddyHoroscope.vue";
+import {onMounted, ref} from "vue";
+import {getSign, getZodiac} from 'horoscope';
 
 defineProps({
   buddies: Object,
   filter: Object,
+})
+
+// const URL = 'https://daily-horoscope3.p.rapidapi.com/api/1.0/get_daily_horoscope.php';
+//
+const zodiacSign = ref()
+const month = ref()
+const day = ref()
+
+
+
+
+onMounted(() => {
+
+    zodiacSign.value = getSign({month: 7, day: 25})
+    console.log(getSign({month: 7, day: 25 }))
+
+    // axios.get(URL).then((response) => {
+    //     state.zodiacs = response;
+    //     console.log(state.zodiacs);
+    // })
+
 })
 </script>

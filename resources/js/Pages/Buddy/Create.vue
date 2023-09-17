@@ -33,7 +33,7 @@
 
       <div class="col-span-6">
         <label class="label">Birthday</label>
-        <input v-model="form.birthday" type="text" class="input" />
+        <input v-model="form.birthday" type="date" class="input" />
         <div v-if="form.errors.birthday" class="input-error">{{ form.errors.birthday }}</div>
       </div>
       <div class="col-span-6">
