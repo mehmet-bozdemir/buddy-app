@@ -1,3 +1,15 @@
+<script setup>
+import {Link, usePage} from '@inertiajs/vue3'
+import {computed} from 'vue'
+import HeaderBlock from '@/Components/UI/HeaderBlock.vue'
+import FooterBlock from "@/Components/UI/FooterBlock.vue";
+
+const page = usePage()
+const flashSuccess = computed(
+    () => page.props.flash.success,
+)
+</script>
+
 <template>
   <HeaderBlock />
   <header class="w-full bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 ">
@@ -24,14 +36,4 @@
     <FooterBlock/>
 </template>
 
-<script setup>
-import {Link, usePage} from '@inertiajs/vue3'
-import {computed} from 'vue'
-import HeaderBlock from '@/Components/UI/HeaderBlock.vue'
-import FooterBlock from "@/Components/UI/FooterBlock.vue";
 
-const page = usePage()
-const flashSuccess = computed(
-  () => page.props.flash.success,
-)
-</script>

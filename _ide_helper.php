@@ -18937,6 +18937,29 @@
      
 }
 
+    namespace Intervention\Zodiac\Laravel { 
+            /**
+     * 
+     *
+     */ 
+        class ZodiacFacade {
+                    /**
+         * Make zodiac from input date
+         *
+         * @param mixed $date
+         * @return \Intervention\Zodiac\AbstractZodiac 
+         * @static 
+         */ 
+        public static function make($date)
+        {
+                        /** @var \Intervention\Zodiac\Laravel\ZodiacBridge $instance */
+                        return $instance->make($date);
+        }
+         
+    }
+     
+}
+
     namespace Spatie\LaravelIgnition\Facades { 
             /**
      * 
@@ -23410,6 +23433,7 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
+            class Zodiac extends \Intervention\Zodiac\Laravel\ZodiacFacade {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
      
 }

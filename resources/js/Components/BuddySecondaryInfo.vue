@@ -1,3 +1,11 @@
+<script setup>
+
+defineProps({
+    buddy: Object,
+})
+
+</script>
+
 <template>
     <div class="flex flex-col justify-center items-center">
         <div class="flex flex-row justify-center items-center">
@@ -11,9 +19,4 @@
     </div>
 </template>
 
-<script setup>
-defineProps({
-  buddy: Object,
-})
 
-</script>

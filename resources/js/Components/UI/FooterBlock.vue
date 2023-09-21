@@ -1,3 +1,6 @@
+<script setup>
+</script>
+
 <template>
   <div class="w-full bg-gray-800">
     <div class="container mx-auto">
@@ -7,5 +10,3 @@
     </div>
   </div>
 </template>
-<script setup>
-</script>

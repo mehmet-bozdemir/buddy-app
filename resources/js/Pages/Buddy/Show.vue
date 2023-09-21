@@ -1,3 +1,15 @@
+<script setup>
+import BuddyMainInfo from '@/Components/BuddyMainInfo.vue'
+import BuddySecondaryInfo from '@/Components/BuddySecondaryInfo.vue'
+import Box from '@/Components/UI/Box.vue'
+import {Link} from '@inertiajs/vue3'
+import route from 'ziggy-js/src/js/index.js'
+
+defineProps({
+    buddy: Object,
+})
+</script>
+
 <template>
   <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4">
     <Box class=" md:col-span-7 flex items-center w-full">
@@ -30,14 +42,3 @@
   </div>
 </template>
 
-<script setup>
-import BuddyMainInfo from '@/Components/BuddyMainInfo.vue'
-import BuddySecondaryInfo from '@/Components/BuddySecondaryInfo.vue'
-import Box from '@/Components/UI/Box.vue'
-import {Link} from '@inertiajs/vue3'
-import route from 'ziggy-js/src/js/index.js'
-
-defineProps({
-  buddy: Object,
-})
-</script>

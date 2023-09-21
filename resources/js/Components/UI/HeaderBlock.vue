@@ -1,3 +1,7 @@
+<script setup>
+import Logo from '@/Components/UI/Logo.vue'
+</script>
+
 <template>
   <div class="w-full bg-gray-800">
     <div class="container mx-auto">
@@ -7,6 +11,4 @@
     </div>
   </div>
 </template>
-<script setup>
-import Logo from '@/Components/UI/Logo.vue'
-</script>
+

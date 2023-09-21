@@ -1,21 +1,37 @@
+<script setup>
+import {Link} from '@inertiajs/vue3';
+import Box from '@/Components/UI/Box.vue';
+import BuddyMainInfo from '@/Components/BuddyMainInfo.vue';
+import BuddySecondaryInfo from '@/Components/BuddySecondaryInfo.vue';
+import Pagination from '@/Components/UI/Pagination.vue';
+import Search from '@/Components/UI/Search.vue';
+import {computed, ref} from "vue";
+
+defineProps({
+    buddies: Object,
+    filter: Object,
+})
+
+</script>
+
 <template>
   <Search :filter="filter" />
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
     <Box v-for="buddy in buddies.data" :key="buddy.id">
       <div class="flex flex-col">
-        <div class="flex justify-center items-center">
-          <div v-if="buddy.images[0]">
-            <img
-              v-for="image in buddy.images.slice(0, 1)"
-              :key="image.id"
-              :src="image.src"
-              class="rounded-full h-24 w-24"
-            />
-          </div>
-          <div v-else class="h-24 w-24 border border-yellow-400 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 flex items-center justify-center">
-            <svg class="h-24 w-24 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
-          </div>
-        </div>
+<!--        <div class="flex justify-center items-center">-->
+<!--          <div v-if="buddy.images[0]">-->
+<!--            <img-->
+<!--              v-for="image in buddy.images.slice(0, 1)"-->
+<!--              :key="image.id"-->
+<!--              :src="image.src"-->
+<!--              class="rounded-full h-24 w-24"-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div v-else class="h-24 w-24 border border-yellow-400 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 flex items-center justify-center">-->
+<!--            <svg class="h-24 w-24 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>-->
+<!--          </div>-->
+<!--        </div>-->
         <div>
           <Link :href="route('buddy.show', buddy.id)">
             <BuddyMainInfo :buddy="buddy" class="text-2xl font-bold" />
@@ -46,40 +62,3 @@
   </div>
 </template>
 
-<script setup>
-import {Link} from '@inertiajs/vue3';
-import Box from '@/Components/UI/Box.vue';
-import BuddyMainInfo from '@/Components/BuddyMainInfo.vue';
-import BuddySecondaryInfo from '@/Components/BuddySecondaryInfo.vue';
-import Pagination from '@/Components/UI/Pagination.vue';
-import Search from '@/Components/UI/Search.vue';
-import BuddyHoroscope from "@/Components/BuddyHoroscope.vue";
-import {onMounted, ref} from "vue";
-import {getSign, getZodiac} from 'horoscope';
-
-defineProps({
-  buddies: Object,
-  filter: Object,
-})
-
-// const URL = 'https://daily-horoscope3.p.rapidapi.com/api/1.0/get_daily_horoscope.php';
-//
-const zodiacSign = ref()
-const month = ref()
-const day = ref()
-
-
-
-
-onMounted(() => {
-
-    zodiacSign.value = getSign({month: 7, day: 25})
-    console.log(getSign({month: 7, day: 25 }))
-
-    // axios.get(URL).then((response) => {
-    //     state.zodiacs = response;
-    //     console.log(state.zodiacs);
-    // })
-
-})
-</script>

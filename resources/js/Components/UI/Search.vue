@@ -1,3 +1,25 @@
+<script setup>
+import {useForm} from '@inertiajs/vue3'
+import route from 'ziggy-js/src/js/index.js'
+
+const props = defineProps({filter: Object})
+
+const filterForm = useForm({
+    name : props.filter.name ?? null,
+})
+
+const filterBuddy = () => {
+    filterForm.get(
+        route('buddy.index'),
+        {
+            preserveState: true,
+            preserveScroll: true,
+        },
+    )
+}
+
+</script>
+
 <template>
   <form
     class="w-full mb-4"
@@ -23,24 +45,4 @@
   </form>
 </template>
 
-<script setup>
-import {useForm} from '@inertiajs/vue3'
-import route from 'ziggy-js/src/js/index.js'
 
-const props = defineProps({filter: Object})
-
-const filterForm = useForm({
-  name : props.filter.name ?? null,
-})
-
-const filterBuddy = () => {
-  filterForm.get(
-    route('buddy.index'),
-    {
-      preserveState: true,
-      preserveScroll: true,
-    },
-  )
-}
-
-</script>

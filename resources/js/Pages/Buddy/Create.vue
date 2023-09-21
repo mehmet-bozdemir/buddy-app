@@ -1,3 +1,20 @@
+<script setup>
+import {useForm} from '@inertiajs/vue3'
+import route from 'ziggy-js/src/js/index.js'
+
+
+const form = useForm({
+    name: null,
+    surname: null,
+    age: 0,
+    birth_place: null,
+    mother_tongue: null,
+    birthday: null,
+})
+
+const create = () => form.post(route('buddy.store'))
+</script>
+
 <template>
   <form @submit.prevent="create">
     <div class="grid grid-cols-6 gap-4">
@@ -43,22 +60,6 @@
   </form>
 </template>
 
-<script setup>
-import {useForm} from '@inertiajs/vue3'
-import route from 'ziggy-js/src/js/index.js'
-
-
-const form = useForm({
-  name: null,
-  surname: null,
-  age: 0,
-  birth_place: null,
-  mother_tongue: null,
-  birthday: null,
-})
-
-const create = () => form.post(route('buddy.store'))
-</script>
 
 <style scoped>
 label {

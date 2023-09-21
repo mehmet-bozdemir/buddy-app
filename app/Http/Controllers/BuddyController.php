@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Buddy;
 use Illuminate\Http\Request;
+use Intervention\Zodiac\Calculator;
 
 class BuddyController extends Controller
 {
@@ -46,6 +47,9 @@ class BuddyController extends Controller
      */
     public function store(Request $request)
     {
+        $zodiac = Calculator::make($request->birthday);
+        $zodiacName = $zodiac->name();
+
         Buddy::create([
             ... $request->all(),
             ... $request->validate([
@@ -55,12 +59,12 @@ class BuddyController extends Controller
                 'birth_place' => 'required',
                 'mother_tongue' => 'required',
                 'birthday' => 'required',
-            ])
+            ]),
+                'zodiac_name' => $zodiacName
         ]);
 
         return redirect()->route( "buddy.index")
             ->with('success', 'Buddy was created!');
-
     }
 
     /**

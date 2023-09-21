@@ -1,3 +1,23 @@
+<script setup>
+import {useForm} from '@inertiajs/vue3'
+import route from 'ziggy-js/src/js/index.js'
+
+const props = defineProps({
+    buddy: Object,
+})
+
+const form = useForm({
+    name: props.buddy.name,
+    surname: props.buddy.surname,
+    age: props.buddy.age,
+    birth_place: props.buddy.birth_place,
+    mother_tongue: props.buddy.mother_tongue,
+    birthday: props.buddy.birthday,
+})
+
+const update = () => form.put(route('buddy.update',props.buddy.id))
+</script>
+
 <template>
   <form @submit.prevent="update">
     <div class="grid grid-cols-6 gap-4">
@@ -43,22 +63,4 @@
   </form>
 </template>
 
-<script setup>
-import {useForm} from '@inertiajs/vue3'
-import route from 'ziggy-js/src/js/index.js'
 
-const props = defineProps({
-  buddy: Object,
-})
-
-const form = useForm({
-  name: props.buddy.name,
-  surname: props.buddy.surname,
-  age: props.buddy.age,
-  birth_place: props.buddy.birth_place,
-  mother_tongue: props.buddy.mother_tongue,
-  birthday: props.buddy.birthday,
-})
-
-const update = () => form.put(route('buddy.update',props.buddy.id))
-</script>
